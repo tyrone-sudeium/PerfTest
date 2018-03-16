@@ -19,6 +19,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    UITextView *tv = [[UITextView alloc] initWithFrame: self.view.bounds];
+    tv.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.view addSubview: tv];
+    self.textView = tv;
 }
 
 - (void) viewDidAppear:(BOOL)animated

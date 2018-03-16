@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SDMViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (strong, nonatomic) UITextView *textView;
 
 @end

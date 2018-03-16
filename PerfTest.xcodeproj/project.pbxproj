@@ -17,7 +17,6 @@
 		8B80FF2B205B74760093D5BB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B80FF2A205B74760093D5BB /* Default@2x.png */; };
 		8B80FF2D205B74760093D5BB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B80FF2C205B74760093D5BB /* Default-568h@2x.png */; };
 		8B80FF30205B74760093D5BB /* SDMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B80FF2F205B74760093D5BB /* SDMViewController.m */; };
-		8B80FF33205B74760093D5BB /* SDMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B80FF31205B74760093D5BB /* SDMViewController.xib */; };
 		8B80FF3B205B78FE0093D5BB /* SDMTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B80FF3A205B78FE0093D5BB /* SDMTest.m */; };
 		8B80FF3D205B838F0093D5BB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B80FF3C205B838F0093D5BB /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
@@ -38,7 +37,6 @@
 		8B80FF2C205B74760093D5BB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8B80FF2E205B74760093D5BB /* SDMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDMViewController.h; sourceTree = "<group>"; };
 		8B80FF2F205B74760093D5BB /* SDMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDMViewController.m; sourceTree = "<group>"; };
-		8B80FF32205B74760093D5BB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SDMViewController.xib; sourceTree = "<group>"; };
 		8B80FF39205B78FE0093D5BB /* SDMTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMTest.h; sourceTree = "<group>"; };
 		8B80FF3A205B78FE0093D5BB /* SDMTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMTest.m; sourceTree = "<group>"; };
 		8B80FF3C205B838F0093D5BB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -96,7 +94,6 @@
 				8B80FF2F205B74760093D5BB /* SDMViewController.m */,
 				8B80FF39205B78FE0093D5BB /* SDMTest.h */,
 				8B80FF3A205B78FE0093D5BB /* SDMTest.m */,
-				8B80FF31205B74760093D5BB /* SDMViewController.xib */,
 				8B80FF1D205B74760093D5BB /* Supporting Files */,
 			);
 			path = PerfTest;
@@ -172,7 +169,6 @@
 				8B80FF29205B74760093D5BB /* Default.png in Resources */,
 				8B80FF2B205B74760093D5BB /* Default@2x.png in Resources */,
 				8B80FF2D205B74760093D5BB /* Default-568h@2x.png in Resources */,
-				8B80FF33205B74760093D5BB /* SDMViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,14 +195,6 @@
 				8B80FF20205B74760093D5BB /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		8B80FF31205B74760093D5BB /* SDMViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8B80FF32205B74760093D5BB /* en */,
-			);
-			name = SDMViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
