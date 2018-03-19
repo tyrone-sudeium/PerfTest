@@ -7,6 +7,10 @@
 //
 
 #import "SDMTest.h"
+#import "SDMUser.h"
+#import "SDMSalesperson.h"
+#import "SDMSale.h"
+#import "SDMSQLContext.h"
 
 NSString * const testStr = @""
 "59\n"
@@ -112,8 +116,61 @@ NSString * const testStr = @""
 
 @implementation SDMTest
 
-+ (void) runTest {
++ (NSString*) runEulerTest {
+    CFTimeInterval start = CACurrentMediaTime();
     [self maximalTotalFromString: testStr];
+    CFTimeInterval end = CACurrentMediaTime();
+    CFTimeInterval duration = end - start;
+
+    return [NSString stringWithFormat: @"Euler test: %.4f", duration];
+}
+
++ (NSString*) runSqliteTest {
+    NSArray *users;
+    NSArray *salespeople;
+    NSArray *sales;
+    NSMutableString *output = [NSMutableString new];
+    SDMSQLContext *sqlContext = [SDMSQLContext new];
+
+    {
+        CFTimeInterval start = CACurrentMediaTime();
+
+        users = [self randomUsers: 200];
+        salespeople = [self randomSalespeople: 10];
+        sales = [self randomSales: 4000 users: users salespeople: salespeople];
+
+        CFTimeInterval end = CACurrentMediaTime();
+        CFTimeInterval duration = end - start;
+
+        [output appendFormat: @"Create test data: %.4f\n", duration];
+    }
+
+    {
+        CFTimeInterval start = CACurrentMediaTime();
+
+        [sqlContext buildSchemaForClasses: @[SDMUser.class, SDMSale.class, SDMSalesperson.class]];
+        [sqlContext insert: users];
+        [sqlContext insert: salespeople];
+        [sqlContext insert: sales];
+
+        CFTimeInterval end = CACurrentMediaTime();
+        CFTimeInterval duration = end - start;
+
+        [output appendFormat: @"Insert: %.4f\n", duration];
+    }
+
+    {
+        CFTimeInterval start = CACurrentMediaTime();
+
+        
+
+        CFTimeInterval end = CACurrentMediaTime();
+        CFTimeInterval duration = end - start;
+
+        [output appendFormat: @"Query data: %.4f", duration];
+    }
+
+    return output;
 }
 
 + (NSNumber*) maximalTotalFromString: (NSString*) str {
@@ -149,6 +206,113 @@ NSString * const testStr = @""
         [numbers addObject: @([numberStr integerValue])];
     }
     return numbers;
+}
+
+static const char* _firstNames[] = {
+    "Purple", "Twilight", "Midnight", "Pinkie", "Rainbow",
+    "Harmony", "Sunrise", "Sunset", "Sweetie", "Leafy",
+    "Shiny", "Lighty", "Wonder", "Sunshine", "Rainy",
+    "Sugar", "Starlight", "Azure", "Heavenly", "Lovely",
+    "Perfect", "Pretty", "Silly", "Calmly", "Kindly",
+    "Cutie", "Aurora", "Enigma", "Smarty", "Crystal",
+    "Frosty"
+};
+
+static const char* _surnames[] = {
+    "Sprinkles", "Sparkles", "Fluffles", "Twinkle", "Joy",
+    "Shimmer", "Glitter", "Glimmer", "Belle", "Pony", "Horsey",
+    "Neigh", "Mane", "Hooves", "Star", "Rose", "Flowers",
+    "Unicorn", "Pegasus", "Kindheart", "Song", "Pants",
+    "Skies", "Breeze", "Whistles", "Spirit", "Saddles",
+    "Heart", "Cake", "Leaves", "Sweet", "Tune", "Pop"
+};
+
+static const char* _hostnames[] = {
+    "ponymail.net", "equestria.gov", "derpymail.com",
+    "mailmare.com", "pegasus-express.com", "cloudsdale.org",
+    "celestia.edu"
+};
+
++ (NSArray*) randomNames: (NSUInteger) count
+{
+    // This method seems weird but it should prevent duplicates.
+    
+    static const NSInteger FIRST_NAMES_COUNT = 31;
+    static const NSInteger SURNAMES_COUNT = 33;
+
+    NSMutableSet *allNamesSet = [NSMutableSet setWithCapacity: FIRST_NAMES_COUNT * SURNAMES_COUNT];
+    for (NSInteger i = 0; i < FIRST_NAMES_COUNT; i++) {
+        for (NSInteger j = 0; j < SURNAMES_COUNT; j++) {
+            [allNamesSet addObject: [NSString stringWithFormat: @"%s %s", _firstNames[i], _surnames[j]]];
+        }
+    }
+    NSMutableArray *allNames = allNamesSet.allObjects.mutableCopy;
+    // Shuffle
+    for (NSUInteger i = 0; i < allNames.count - 1; i++) {
+        NSUInteger remaining = allNames.count - i;
+        [allNames exchangeObjectAtIndex: i withObjectAtIndex: i + arc4random_uniform(remaining)];
+    }
+
+    return [allNames subarrayWithRange: NSMakeRange(0, count)];
+}
+
++ (NSArray*) randomUsers: (NSUInteger) count
+{
+    NSArray *names = [self randomNames: count];
+    
+    NSMutableArray *arr = [NSMutableArray arrayWithCapacity: count];
+    for (NSUInteger i = 0; i < count; i++) {
+        NSString *hostname = [NSString stringWithUTF8String: _hostnames[arc4random_uniform(7)]];
+        NSString *name = [names objectAtIndex: i];
+        NSString *firstName = [[name componentsSeparatedByString: @" "] objectAtIndex: 0];
+        NSString *surname = [[name componentsSeparatedByString: @" "] objectAtIndex: 1];
+        NSString *email = [NSString stringWithFormat: @"%@.%@@%@",
+                           [firstName substringToIndex: 1],
+                           surname,
+                           hostname];
+        SDMUser *user = [SDMUser new];
+        user.name = name;
+        user.email = email;
+        user.userId = @(i);
+        [arr addObject: user];
+    }
+    return arr;
+}
+
++ (NSArray*) randomSalespeople: (NSUInteger) count
+{
+    NSArray *names = [self randomNames: count];
+    NSMutableArray *arr = [NSMutableArray arrayWithCapacity: count];
+    for (NSUInteger i = 0; i < count; i++) {
+        SDMSalesperson *person = [SDMSalesperson new];
+        person.name = [names objectAtIndex: i];
+        person.salespersonId = @(i);
+        [arr addObject: person];
+    }
+    return arr;
+}
+
++ (NSArray*) randomSales: (NSUInteger) count users: (NSArray*) users salespeople: (NSArray*) salespeople
+{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
+    NSMutableArray *arr = [NSMutableArray arrayWithCapacity: count];
+    for (NSUInteger i = 0; i < count; i++) {
+        NSDateComponents *dateCmp = [NSDateComponents new];
+        dateCmp.year = arc4random_uniform(18) + 2000;
+        dateCmp.month = arc4random_uniform(12);
+        dateCmp.day = arc4random_uniform(28);
+        dateCmp.hour = arc4random_uniform(24);
+        dateCmp.minute = arc4random_uniform(60);
+        dateCmp.second = arc4random_uniform(60);
+        SDMSale *sale = [SDMSale new];
+        sale.date = [calendar dateFromComponents: dateCmp];
+        sale.user = [users objectAtIndex: arc4random_uniform(users.count)];
+        sale.salesperson = [salespeople objectAtIndex: arc4random_uniform(salespeople.count)];
+        sale.desc = [NSString stringWithFormat: @"Thing %llu", (unsigned long long) i];
+        sale.amount = [NSDecimalNumber decimalNumberWithString: [NSString stringWithFormat: @"%llu", (unsigned long long) arc4random_uniform(100000) + 1000]];
+        [arr addObject: sale];
+    }
+    return arr;
 }
 
 @end

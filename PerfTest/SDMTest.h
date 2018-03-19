@@ -10,7 +10,10 @@
 
 @interface SDMTest : NSObject
 
-+ (void) runTest;
++ (NSString*) runEulerTest;
++ (NSString*) runSqliteTest;
+
 + (NSNumber*) maximalTotalFromString: (NSString*) str;
++ (NSArray*) randomNames: (NSUInteger) count;
 
 @end

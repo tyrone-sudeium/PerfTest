@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B80E38E205FB4DD006240E1 /* SDMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B80E38D205FB4DD006240E1 /* SDMUser.m */; };
+		8B80E391205FB4EF006240E1 /* SDMSQLContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B80E390205FB4EF006240E1 /* SDMSQLContext.m */; };
+		8B80E394205FB4F9006240E1 /* SDMSalesperson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B80E393205FB4F9006240E1 /* SDMSalesperson.m */; };
+		8B80E397205FB508006240E1 /* SDMSale.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B80E396205FB508006240E1 /* SDMSale.m */; };
 		8B80FF17205B74760093D5BB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B80FF16205B74760093D5BB /* UIKit.framework */; };
 		8B80FF19205B74760093D5BB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B80FF18205B74760093D5BB /* Foundation.framework */; };
 		8B80FF1B205B74760093D5BB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B80FF1A205B74760093D5BB /* CoreGraphics.framework */; };
@@ -19,9 +23,20 @@
 		8B80FF30205B74760093D5BB /* SDMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B80FF2F205B74760093D5BB /* SDMViewController.m */; };
 		8B80FF3B205B78FE0093D5BB /* SDMTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B80FF3A205B78FE0093D5BB /* SDMTest.m */; };
 		8B80FF3D205B838F0093D5BB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B80FF3C205B838F0093D5BB /* QuartzCore.framework */; };
+		8B80FF40205F6DB00093D5BB /* SDMHorizontalLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B80FF3F205F6DB00093D5BB /* SDMHorizontalLayoutView.m */; };
+		8B80FF44205F7A9D0093D5BB /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B80FF42205F7A9D0093D5BB /* sqlite3.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B80E38C205FB4DD006240E1 /* SDMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMUser.h; sourceTree = "<group>"; };
+		8B80E38D205FB4DD006240E1 /* SDMUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMUser.m; sourceTree = "<group>"; };
+		8B80E38F205FB4EF006240E1 /* SDMSQLContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMSQLContext.h; sourceTree = "<group>"; };
+		8B80E390205FB4EF006240E1 /* SDMSQLContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMSQLContext.m; sourceTree = "<group>"; };
+		8B80E392205FB4F9006240E1 /* SDMSalesperson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMSalesperson.h; sourceTree = "<group>"; };
+		8B80E393205FB4F9006240E1 /* SDMSalesperson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMSalesperson.m; sourceTree = "<group>"; };
+		8B80E395205FB508006240E1 /* SDMSale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMSale.h; sourceTree = "<group>"; };
+		8B80E396205FB508006240E1 /* SDMSale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMSale.m; sourceTree = "<group>"; };
+		8B80E398205FB523006240E1 /* SDMSQLStorable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDMSQLStorable.h; sourceTree = "<group>"; };
 		8B80FF13205B74760093D5BB /* PerfTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerfTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B80FF16205B74760093D5BB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8B80FF18205B74760093D5BB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -40,6 +55,10 @@
 		8B80FF39205B78FE0093D5BB /* SDMTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMTest.h; sourceTree = "<group>"; };
 		8B80FF3A205B78FE0093D5BB /* SDMTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMTest.m; sourceTree = "<group>"; };
 		8B80FF3C205B838F0093D5BB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8B80FF3E205F6DB00093D5BB /* SDMHorizontalLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMHorizontalLayoutView.h; sourceTree = "<group>"; };
+		8B80FF3F205F6DB00093D5BB /* SDMHorizontalLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMHorizontalLayoutView.m; sourceTree = "<group>"; };
+		8B80FF42205F7A9D0093D5BB /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
+		8B80FF43205F7A9D0093D5BB /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,8 +111,21 @@
 				8B80FF26205B74760093D5BB /* SDMAppDelegate.m */,
 				8B80FF2E205B74760093D5BB /* SDMViewController.h */,
 				8B80FF2F205B74760093D5BB /* SDMViewController.m */,
+				8B80FF3E205F6DB00093D5BB /* SDMHorizontalLayoutView.h */,
+				8B80FF3F205F6DB00093D5BB /* SDMHorizontalLayoutView.m */,
 				8B80FF39205B78FE0093D5BB /* SDMTest.h */,
 				8B80FF3A205B78FE0093D5BB /* SDMTest.m */,
+				8B80E38C205FB4DD006240E1 /* SDMUser.h */,
+				8B80E38D205FB4DD006240E1 /* SDMUser.m */,
+				8B80E38F205FB4EF006240E1 /* SDMSQLContext.h */,
+				8B80E390205FB4EF006240E1 /* SDMSQLContext.m */,
+				8B80E392205FB4F9006240E1 /* SDMSalesperson.h */,
+				8B80E393205FB4F9006240E1 /* SDMSalesperson.m */,
+				8B80E395205FB508006240E1 /* SDMSale.h */,
+				8B80E396205FB508006240E1 /* SDMSale.m */,
+				8B80E398205FB523006240E1 /* SDMSQLStorable.h */,
+				8B80FF42205F7A9D0093D5BB /* sqlite3.c */,
+				8B80FF43205F7A9D0093D5BB /* sqlite3.h */,
 				8B80FF1D205B74760093D5BB /* Supporting Files */,
 			);
 			path = PerfTest;
@@ -183,6 +215,12 @@
 				8B80FF27205B74760093D5BB /* SDMAppDelegate.m in Sources */,
 				8B80FF30205B74760093D5BB /* SDMViewController.m in Sources */,
 				8B80FF3B205B78FE0093D5BB /* SDMTest.m in Sources */,
+				8B80FF40205F6DB00093D5BB /* SDMHorizontalLayoutView.m in Sources */,
+				8B80FF44205F7A9D0093D5BB /* sqlite3.c in Sources */,
+				8B80E38E205FB4DD006240E1 /* SDMUser.m in Sources */,
+				8B80E391205FB4EF006240E1 /* SDMSQLContext.m in Sources */,
+				8B80E394205FB4F9006240E1 /* SDMSalesperson.m in Sources */,
+				8B80E397205FB508006240E1 /* SDMSale.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
