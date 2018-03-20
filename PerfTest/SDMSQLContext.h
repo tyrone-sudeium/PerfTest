@@ -10,10 +10,12 @@
 #import "SDMSQLStorable.h"
 
 @interface SDMSQLContext : NSObject
+@property (nonatomic, readonly, assign) NSUInteger queryCount;
 
 - (void) buildSchemaForClasses: (NSArray*) classes;
 - (id<SDMSQLStorable>) objectWithId: (NSNumber*) objectId class: (Class) klass;
 
 - (void) insert: (NSArray*) objects;
+- (NSArray*) allObjects: (Class) klass;
 
 @end

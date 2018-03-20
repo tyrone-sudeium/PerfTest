@@ -84,13 +84,14 @@ static NSArray *hostnames = nil;
     {
         CFTimeInterval start = CACurrentMediaTime();
 
-        
+        [sqlContext allObjects: [SDMSale class]];
 
         CFTimeInterval end = CACurrentMediaTime();
         CFTimeInterval duration = end - start;
 
-        [output appendFormat: @"Query data: %.4f", duration];
+        [output appendFormat: @"Query data: %.4f\n", duration];
     }
+    [output appendFormat: @"Ran %llu SQL queries", (unsigned long long)sqlContext.queryCount];
 
     return output;
 }

@@ -76,6 +76,24 @@ static int SDMSQLContextCallback(void *context, int argc, char **argv, char **az
     return object;
 }
 
+- (NSArray*) allObjects: (Class) klass
+{
+    NSString *table = [klass table];
+    NSString *sql = [NSString stringWithFormat: @"SELECT * FROM %@", table];
+    NSArray *rows = [self runSQL: sql];
+    if (rows.count == 0) {
+        return nil;
+    }
+    NSMutableArray *objects = [NSMutableArray arrayWithCapacity: rows.count];
+    for (NSDictionary *row in rows) {
+        NSString *cacheKey = [NSString stringWithFormat: @"%@.%@", klass, row[@"id"]];
+        id<SDMSQLStorable> object = [[klass alloc] initWithSQLDict: row inContext: self];
+        [self.objectCache setObject: object forKey: cacheKey];
+        [objects addObject: object];
+    }
+    return objects;
+}
+
 - (void) buildSchemaForClasses:(NSArray *)classes
 {
     NSMutableArray *statements = [NSMutableArray arrayWithCapacity: classes.count + 2];
@@ -112,6 +130,7 @@ static int SDMSQLContextCallback(void *context, int argc, char **argv, char **az
 
 - (NSArray*) runSQL: (NSString*) sql
 {
+    _queryCount++;
     char *errMsg = nil;
     SDMSQLCallbackContext *ctx = [SDMSQLCallbackContext new];
     int rc = sqlite3_exec(_db, [sql UTF8String], &SDMSQLContextCallback, (__bridge void*) ctx, &errMsg);
