@@ -107,6 +107,7 @@ static int SDMSQLContextCallback(void *context, int argc, char **argv, char **az
          [values componentsJoinedByString: @","]];
     }
     [sql appendString: @"COMMIT;"];
+    [self runSQL: sql];
 }
 
 - (NSArray*) runSQL: (NSString*) sql
