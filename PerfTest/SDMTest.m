@@ -116,6 +116,11 @@ NSString * const testStr = @""
 
 @implementation SDMTest
 
++ (void) load
+{
+    [self loadNamesFromDiskIfNecessary];
+}
+
 + (NSString*) runEulerTest {
     CFTimeInterval start = CACurrentMediaTime();
     [self maximalTotalFromString: testStr];
@@ -208,42 +213,29 @@ NSString * const testStr = @""
     return numbers;
 }
 
-static const char* _firstNames[] = {
-    "Purple", "Twilight", "Midnight", "Pinkie", "Rainbow",
-    "Harmony", "Sunrise", "Sunset", "Sweetie", "Leafy",
-    "Shiny", "Lighty", "Wonder", "Sunshine", "Rainy",
-    "Sugar", "Starlight", "Azure", "Heavenly", "Lovely",
-    "Perfect", "Pretty", "Silly", "Calmly", "Kindly",
-    "Cutie", "Aurora", "Enigma", "Smarty", "Crystal",
-    "Frosty"
-};
+static NSArray *firstNames = nil;
+static NSArray *surnames = nil;
+static NSArray *hostnames = nil;
 
-static const char* _surnames[] = {
-    "Sprinkles", "Sparkles", "Fluffles", "Twinkle", "Joy",
-    "Shimmer", "Glitter", "Glimmer", "Belle", "Pony", "Horsey",
-    "Neigh", "Mane", "Hooves", "Star", "Rose", "Flowers",
-    "Unicorn", "Pegasus", "Kindheart", "Song", "Pants",
-    "Skies", "Breeze", "Whistles", "Spirit", "Saddles",
-    "Heart", "Cake", "Leaves", "Sweet", "Tune", "Pop"
-};
-
-static const char* _hostnames[] = {
-    "ponymail.net", "equestria.gov", "derpymail.com",
-    "mailmare.com", "pegasus-express.com", "cloudsdale.org",
-    "celestia.edu"
-};
++ (void) loadNamesFromDiskIfNecessary
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        firstNames = [NSKeyedUnarchiver unarchiveObjectWithFile: [[NSBundle mainBundle] pathForResource: @"firstnames" ofType: @"dat"]];
+        surnames = [NSKeyedUnarchiver unarchiveObjectWithFile: [[NSBundle mainBundle] pathForResource: @"surnames" ofType: @"dat"]];
+        hostnames = [NSKeyedUnarchiver unarchiveObjectWithFile: [[NSBundle mainBundle] pathForResource: @"hostnames" ofType: @"dat"]];
+    });
+}
 
 + (NSArray*) randomNames: (NSUInteger) count
 {
-    // This method seems weird but it should prevent duplicates.
+    [self loadNamesFromDiskIfNecessary];
     
-    static const NSInteger FIRST_NAMES_COUNT = 31;
-    static const NSInteger SURNAMES_COUNT = 33;
-
-    NSMutableSet *allNamesSet = [NSMutableSet setWithCapacity: FIRST_NAMES_COUNT * SURNAMES_COUNT];
-    for (NSInteger i = 0; i < FIRST_NAMES_COUNT; i++) {
-        for (NSInteger j = 0; j < SURNAMES_COUNT; j++) {
-            [allNamesSet addObject: [NSString stringWithFormat: @"%s %s", _firstNames[i], _surnames[j]]];
+    // This method seems weird but it should prevent duplicates.
+    NSMutableSet *allNamesSet = [NSMutableSet setWithCapacity: firstNames.count * surnames.count];
+    for (NSInteger i = 0; i < firstNames.count; i++) {
+        for (NSInteger j = 0; j < surnames.count; j++) {
+            [allNamesSet addObject: [NSString stringWithFormat: @"%@ %@", firstNames[i], surnames[j]]];
         }
     }
     NSMutableArray *allNames = allNamesSet.allObjects.mutableCopy;
@@ -257,12 +249,12 @@ static const char* _hostnames[] = {
 }
 
 + (NSArray*) randomUsers: (NSUInteger) count
-{
+{    
     NSArray *names = [self randomNames: count];
     
     NSMutableArray *arr = [NSMutableArray arrayWithCapacity: count];
     for (NSUInteger i = 0; i < count; i++) {
-        NSString *hostname = [NSString stringWithUTF8String: _hostnames[arc4random_uniform(7)]];
+        NSString *hostname = hostnames[arc4random_uniform(hostnames.count)];
         NSString *name = [names objectAtIndex: i];
         NSString *firstName = [[name componentsSeparatedByString: @" "] objectAtIndex: 0];
         NSString *surname = [[name componentsSeparatedByString: @" "] objectAtIndex: 1];

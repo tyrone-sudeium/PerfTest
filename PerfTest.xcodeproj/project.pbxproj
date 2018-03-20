@@ -25,6 +25,9 @@
 		8B80FF3D205B838F0093D5BB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B80FF3C205B838F0093D5BB /* QuartzCore.framework */; };
 		8B80FF40205F6DB00093D5BB /* SDMHorizontalLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B80FF3F205F6DB00093D5BB /* SDMHorizontalLayoutView.m */; };
 		8B80FF44205F7A9D0093D5BB /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B80FF42205F7A9D0093D5BB /* sqlite3.c */; };
+		8BA2418F206090CB0022EBD8 /* firstnames.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8BA2418C206090CB0022EBD8 /* firstnames.dat */; };
+		8BA24190206090CB0022EBD8 /* hostnames.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8BA2418D206090CB0022EBD8 /* hostnames.dat */; };
+		8BA24191206090CB0022EBD8 /* surnames.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8BA2418E206090CB0022EBD8 /* surnames.dat */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +62,9 @@
 		8B80FF3F205F6DB00093D5BB /* SDMHorizontalLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDMHorizontalLayoutView.m; sourceTree = "<group>"; };
 		8B80FF42205F7A9D0093D5BB /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
 		8B80FF43205F7A9D0093D5BB /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
+		8BA2418C206090CB0022EBD8 /* firstnames.dat */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = firstnames.dat; sourceTree = "<group>"; };
+		8BA2418D206090CB0022EBD8 /* hostnames.dat */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = hostnames.dat; sourceTree = "<group>"; };
+		8BA2418E206090CB0022EBD8 /* surnames.dat */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = surnames.dat; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +147,9 @@
 				8B80FF28205B74760093D5BB /* Default.png */,
 				8B80FF2A205B74760093D5BB /* Default@2x.png */,
 				8B80FF2C205B74760093D5BB /* Default-568h@2x.png */,
+				8BA2418C206090CB0022EBD8 /* firstnames.dat */,
+				8BA2418D206090CB0022EBD8 /* hostnames.dat */,
+				8BA2418E206090CB0022EBD8 /* surnames.dat */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -201,6 +210,9 @@
 				8B80FF29205B74760093D5BB /* Default.png in Resources */,
 				8B80FF2B205B74760093D5BB /* Default@2x.png in Resources */,
 				8B80FF2D205B74760093D5BB /* Default-568h@2x.png in Resources */,
+				8BA2418F206090CB0022EBD8 /* firstnames.dat in Resources */,
+				8BA24190206090CB0022EBD8 /* hostnames.dat in Resources */,
+				8BA24191206090CB0022EBD8 /* surnames.dat in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
