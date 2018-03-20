@@ -28,6 +28,7 @@
 		8BA2418F206090CB0022EBD8 /* firstnames.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8BA2418C206090CB0022EBD8 /* firstnames.dat */; };
 		8BA24190206090CB0022EBD8 /* hostnames.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8BA2418D206090CB0022EBD8 /* hostnames.dat */; };
 		8BA24191206090CB0022EBD8 /* surnames.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8BA2418E206090CB0022EBD8 /* surnames.dat */; };
+		8BA241932060964E0022EBD8 /* triangle.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8BA241922060964E0022EBD8 /* triangle.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		8BA2418C206090CB0022EBD8 /* firstnames.dat */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = firstnames.dat; sourceTree = "<group>"; };
 		8BA2418D206090CB0022EBD8 /* hostnames.dat */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = hostnames.dat; sourceTree = "<group>"; };
 		8BA2418E206090CB0022EBD8 /* surnames.dat */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = surnames.dat; sourceTree = "<group>"; };
+		8BA241922060964E0022EBD8 /* triangle.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = triangle.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,21 +117,21 @@
 			children = (
 				8B80FF25205B74760093D5BB /* SDMAppDelegate.h */,
 				8B80FF26205B74760093D5BB /* SDMAppDelegate.m */,
-				8B80FF2E205B74760093D5BB /* SDMViewController.h */,
-				8B80FF2F205B74760093D5BB /* SDMViewController.m */,
 				8B80FF3E205F6DB00093D5BB /* SDMHorizontalLayoutView.h */,
 				8B80FF3F205F6DB00093D5BB /* SDMHorizontalLayoutView.m */,
+				8B80E395205FB508006240E1 /* SDMSale.h */,
+				8B80E396205FB508006240E1 /* SDMSale.m */,
+				8B80E392205FB4F9006240E1 /* SDMSalesperson.h */,
+				8B80E393205FB4F9006240E1 /* SDMSalesperson.m */,
+				8B80E38F205FB4EF006240E1 /* SDMSQLContext.h */,
+				8B80E390205FB4EF006240E1 /* SDMSQLContext.m */,
+				8B80E398205FB523006240E1 /* SDMSQLStorable.h */,
 				8B80FF39205B78FE0093D5BB /* SDMTest.h */,
 				8B80FF3A205B78FE0093D5BB /* SDMTest.m */,
 				8B80E38C205FB4DD006240E1 /* SDMUser.h */,
 				8B80E38D205FB4DD006240E1 /* SDMUser.m */,
-				8B80E38F205FB4EF006240E1 /* SDMSQLContext.h */,
-				8B80E390205FB4EF006240E1 /* SDMSQLContext.m */,
-				8B80E392205FB4F9006240E1 /* SDMSalesperson.h */,
-				8B80E393205FB4F9006240E1 /* SDMSalesperson.m */,
-				8B80E395205FB508006240E1 /* SDMSale.h */,
-				8B80E396205FB508006240E1 /* SDMSale.m */,
-				8B80E398205FB523006240E1 /* SDMSQLStorable.h */,
+				8B80FF2E205B74760093D5BB /* SDMViewController.h */,
+				8B80FF2F205B74760093D5BB /* SDMViewController.m */,
 				8B80FF42205F7A9D0093D5BB /* sqlite3.c */,
 				8B80FF43205F7A9D0093D5BB /* sqlite3.h */,
 				8B80FF1D205B74760093D5BB /* Supporting Files */,
@@ -140,16 +142,17 @@
 		8B80FF1D205B74760093D5BB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8B80FF1E205B74760093D5BB /* PerfTest-Info.plist */,
-				8B80FF1F205B74760093D5BB /* InfoPlist.strings */,
-				8B80FF22205B74760093D5BB /* main.m */,
-				8B80FF24205B74760093D5BB /* PerfTest-Prefix.pch */,
+				8B80FF2C205B74760093D5BB /* Default-568h@2x.png */,
 				8B80FF28205B74760093D5BB /* Default.png */,
 				8B80FF2A205B74760093D5BB /* Default@2x.png */,
-				8B80FF2C205B74760093D5BB /* Default-568h@2x.png */,
 				8BA2418C206090CB0022EBD8 /* firstnames.dat */,
 				8BA2418D206090CB0022EBD8 /* hostnames.dat */,
+				8B80FF1F205B74760093D5BB /* InfoPlist.strings */,
+				8B80FF22205B74760093D5BB /* main.m */,
+				8B80FF1E205B74760093D5BB /* PerfTest-Info.plist */,
+				8B80FF24205B74760093D5BB /* PerfTest-Prefix.pch */,
 				8BA2418E206090CB0022EBD8 /* surnames.dat */,
+				8BA241922060964E0022EBD8 /* triangle.txt */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				8BA2418F206090CB0022EBD8 /* firstnames.dat in Resources */,
 				8BA24190206090CB0022EBD8 /* hostnames.dat in Resources */,
 				8BA24191206090CB0022EBD8 /* surnames.dat in Resources */,
+				8BA241932060964E0022EBD8 /* triangle.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
