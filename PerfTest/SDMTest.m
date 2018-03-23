@@ -190,20 +190,12 @@ static NSArray *hostnames = nil;
 
 + (NSArray*) randomSales: (NSUInteger) count users: (NSArray*) users salespeople: (NSArray*) salespeople
 {
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
     NSMutableArray *arr = [NSMutableArray arrayWithCapacity: count];
     for (NSUInteger i = 0; i < count; i++) {
-        NSDateComponents *dateCmp = [NSDateComponents new];
-        dateCmp.year = arc4random_uniform(18) + 2000;
-        dateCmp.month = arc4random_uniform(12);
-        dateCmp.day = arc4random_uniform(28);
-        dateCmp.hour = arc4random_uniform(24);
-        dateCmp.minute = arc4random_uniform(60);
-        dateCmp.second = arc4random_uniform(60);
         SDMSale *sale = [SDMSale new];
-        sale.date = [calendar dateFromComponents: dateCmp];
-        sale.user = [users objectAtIndex: arc4random_uniform(users.count)];
-        sale.salesperson = [salespeople objectAtIndex: arc4random_uniform(salespeople.count)];
+        sale.date = [NSDate dateWithTimeIntervalSince1970: 946648800 + arc4random_uniform(567648000)];
+        sale.user = [users objectAtIndex: arc4random_uniform((uint32_t)users.count)];
+        sale.salesperson = [salespeople objectAtIndex: arc4random_uniform((uint32_t)salespeople.count)];
         sale.desc = [NSString stringWithFormat: @"Thing %llu", (unsigned long long) i];
         sale.amount = [NSDecimalNumber decimalNumberWithString: [NSString stringWithFormat: @"%llu", (unsigned long long) arc4random_uniform(100000) + 1000]];
         [arr addObject: sale];
